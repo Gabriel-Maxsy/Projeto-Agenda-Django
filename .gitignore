@@ -1,6 +1,8 @@
 # Virtual Environment #
 venv
 
+project/local_settings.py
+
 # Django #
 *.log
 *.pot
