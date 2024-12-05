@@ -27,7 +27,10 @@
                     <tr class="table-row">
                         <!--td são as células que terão na linha da tabela-->
                         <td class="table-cel">
-                            <a href="#" class="table-link">
+                            <a 
+                                href="{% url "contact:contact" contact.id %}" 
+                                class="table-link"
+                            >
                                 {{  contact.id }}
                             </a>
                         </td>
