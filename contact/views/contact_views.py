@@ -6,10 +6,11 @@ from contact.models import Contact
 def index(request):
     contacts = Contact.objects \
         .filter(show=True)\
-        .order_by('-id')[10:20] # Fatiamente, estou pegando do contato 10 até mais 10 a frente.
+        .order_by('-id')[10:20] # Fatiamento, estou pegando do contato 10 até mais 10 a frente.
 
     context = {
         'contacts': contacts,
+        'site_title': 'Contatos - '
     }
 
     return render(
@@ -27,8 +28,11 @@ def contact(request, contact_id):
         #  quanto passando direto na url do site como o arquivo urls mostra
     )
 
+    site_title = f'{single_contact.first_name} {single_contact.last_name} '
+
     context = {
         'contact': single_contact,
+        'site_title': site_title,
     }
     
     return render(
