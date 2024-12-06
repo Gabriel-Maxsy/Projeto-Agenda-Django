@@ -22,6 +22,9 @@ def contact(request, contact_id):
     # single_contact = Contact.objects.filter(pk=contact_id).first()
     single_contact = get_object_or_404(
         Contact, pk=contact_id, show=True
+        #  pk faz a pesquisa nos contatos e o parametro é passado em 
+        #  contact_id tanto no clique como o arquivo html mostra, 
+        #  quanto passando direto na url do site como o arquivo urls mostra
     )
 
     context = {
