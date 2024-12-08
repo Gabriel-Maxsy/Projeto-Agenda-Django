@@ -1,7 +1,7 @@
 {% extends "global/base.html" %}
 
 {% block content %}
-{% if contacts %}
+{% if page_obj %}
     <div class="responsive-table">
         
         <table class="contacts-table">
@@ -22,7 +22,7 @@
             <!--Corpo da tabela-->
             <tbody>
                 <!--For para os contatos dos usuários-->
-                {% for contact in contacts %}
+                {% for contact in page_obj %}
                     <!--tr é a linha da tabela-->
                     <tr class="table-row">
                         <!--td são as células que terão na linha da tabela-->
