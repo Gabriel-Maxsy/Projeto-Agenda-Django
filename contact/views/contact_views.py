@@ -25,7 +25,7 @@ def index(request):
         context
     )
 
-def search(request):
+def search(request):                # Se o valor estiver vazio retornará ''
     search_value = request.GET.get('q', '').strip()
 
     if search_value == '':
