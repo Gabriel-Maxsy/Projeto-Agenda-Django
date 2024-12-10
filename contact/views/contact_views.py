@@ -16,7 +16,7 @@ def index(request):
 
     context = {
         'page_obj': page_obj,
-        'site_title': 'Contacts - '
+        'site_title': 'Create contact - '
     }
 
     return render(
@@ -66,7 +66,7 @@ def contact(request, contact_id):
         #  quanto passando direto na url do site como o arquivo urls mostra
     )
 
-    site_title = f'{single_contact.first_name} {single_contact.last_name} '
+    site_title = f'{single_contact.first_name} {single_contact.last_name} - '
 
     context = {
         'contact': single_contact,
