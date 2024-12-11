@@ -16,7 +16,7 @@ def index(request):
 
     context = {
         'page_obj': page_obj,
-        'site_title': 'Create contact - '
+        'site_title': 'Contacts - '
     }
 
     return render(
