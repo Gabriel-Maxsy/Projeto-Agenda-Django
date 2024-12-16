@@ -1,19 +1,18 @@
-from typing import Any, Dict
-
-from django import forms
-from django.core.exceptions import ValidationError
-from django.core.paginator import Paginator
-from django.db.models import Q
-from django.shortcuts import get_object_or_404, redirect, render
-from contact.models import Contact
+from django.shortcuts import redirect, render
 from contact.forms import ContactForm
 
 def create(request):
     if request.method == 'POST':
+        form = ContactForm(request.POST)
 
         context = {
-            'form': ContactForm(request.POST)
+            'form': form
         }
+
+        if form.is_valid():
+            # form.save(commit= False) o commiit false faz com que o contato não seja salvo na base de dados. (assim podendo o manipular antes de salvar)
+            form.save()
+            return redirect('contact:create')
 
         return render(
             request,
