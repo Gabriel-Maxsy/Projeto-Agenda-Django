@@ -7,9 +7,8 @@ from django.contrib.auth.models import User
 # email (email), created_date (date), description (text)
 # picture (imagem)  
 # category (foreign key), show (boolean),
-
-# Depois
 # owner (foreign key)
+
 class Category(models.Model):
     class Meta:
         verbose_name = 'Category'
