@@ -27,7 +27,7 @@ def create(request):
 
     context = {
         'form': ContactForm(),
-        'site_title': 'Create Contact - '
+        'site_title': 'Create Contact - ',
         'form_action': form_action,
     }
 
