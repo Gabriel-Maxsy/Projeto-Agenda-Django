@@ -326,6 +326,7 @@ svg {
   padding: 1rem;
   display: block;
   line-height: var(--small-font-size);
+  margin-left: 115px;
 }
 .btn-delete {
   background: tomato;
