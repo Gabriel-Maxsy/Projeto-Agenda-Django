@@ -57,11 +57,11 @@ class RegisterForm(UserCreationForm):
     )
 
     last_name = forms.CharField(
-        required=True,
+        required=True, # Faz com que seja obrigatório preencher este campo.
         min_length=3,
     )
     
-    email = forms.EmailField()
+    email = forms.EmailField() # Emails automaticamente já são obrigatórios.
 
     class Meta:
         model = User
