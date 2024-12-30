@@ -112,12 +112,14 @@ class RegisterUpdateForm(forms.ModelForm):
         help_text='Use the same password as before.',
         required=False,
     )
+
     class Meta:
         model = User
         fields = (
             'first_name', 'last_name', 'email',
             'username',
         )
+    
     def save(self, commit=True):
         cleaned_data = self.cleaned_data
         user = super().save(commit=False)
@@ -127,16 +129,21 @@ class RegisterUpdateForm(forms.ModelForm):
         if commit:
             user.save()
         return user
+
     def clean(self):
         password1 = self.cleaned_data.get('password1')
         password2 = self.cleaned_data.get('password2')
+
         if password1 or password2:
+
             if password1 != password2:
                 self.add_error(
                     'password2',
                     ValidationError('Senhas não batem')
                 )
+
         return super().clean()
+    
     def clean_email(self):
         email = self.cleaned_data.get('email')
         current_email = self.instance.email
@@ -147,6 +154,7 @@ class RegisterUpdateForm(forms.ModelForm):
                     ValidationError('Já existe este e-mail', code='invalid')
                 )
         return email
+    
     def clean_password1(self):
         password1 = self.cleaned_data.get('password1')
         if password1:

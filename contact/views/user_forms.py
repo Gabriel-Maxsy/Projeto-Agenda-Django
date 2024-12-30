@@ -24,6 +24,7 @@ def register(request):
 
 def user_update(request):
     form = RegisterUpdateForm(instance=request.user)
+
     if request.method != 'POST':
         return render(
             request,
@@ -32,7 +33,9 @@ def user_update(request):
                 'form': form
             }
         )
+    
     form = RegisterUpdateForm(data=request.POST, instance=request.user)
+    
     if not form.is_valid():
         return render(
             request,
@@ -41,6 +44,7 @@ def user_update(request):
                 'form': form
             }
         )
+    
     form.save()
     return redirect('contact:user_update')
 
