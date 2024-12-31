@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 
 @login_required(login_url='contact:login')
 def create(request):
-    form_action = reverse('contact:create')
+    form_action = reverse('contact:create') # Informando para o form_action que a url onde ele irá mandar os dados é a contact:create
 
     if request.method == 'POST':
         form = ContactForm(request.POST, request.FILES)
