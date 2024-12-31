@@ -23,35 +23,37 @@
             <tbody>
                 <!--For para os contatos dos usuários-->
                 {% for contact in page_obj %}
-                    <!--tr é a linha da tabela-->
-                    <tr class="table-row">
-                        <!--td são as células que terão na linha da tabela-->
-                        <td class="table-cel">
-                            <a 
-                                href="{% url "contact:contact" contact.id %}" 
-                                class="table-link"
-                            >
-                                {{  contact.id }}
-                            </a>
-                        </td>
+                    {% if user == contact.owner %}
+                        <!--tr é a linha da tabela-->
+                        <tr class="table-row">
+                            <!--td são as células que terão na linha da tabela-->
+                            <td class="table-cel">
+                                <a 
+                                    href="{% url "contact:contact" contact.id %}" 
+                                    class="table-link"
+                                >
+                                    {{  contact.id }}
+                                </a>
+                            </td>
 
-                        <td class="table-cel">
-                            {{  contact.first_name  }}
-                        </td>
+                            <td class="table-cel">
+                                {{  contact.first_name  }}
+                            </td>
 
-                        <td class="table-cel">
-                            {{  contact.last_name  }}
-                        </td>
-                        
-                        <td class="table-cel">
-                            {{  contact.phone  }}
-                        </td>
-                        
-                        <td class="table-cel">
-                            {{  contact.email  }}
-                        </td>
+                            <td class="table-cel">
+                                {{  contact.last_name  }}
+                            </td>
+                            
+                            <td class="table-cel">
+                                {{  contact.phone  }}
+                            </td>
+                            
+                            <td class="table-cel">
+                                {{  contact.email  }}
+                            </td>
 
-                    </tr>
+                        </tr>
+                    {% endif %}
                 {% endfor %}
             </tbody>
 

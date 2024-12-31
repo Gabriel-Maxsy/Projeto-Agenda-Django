@@ -5,6 +5,7 @@ from pathlib import Path
 from random import choice
 import django
 from django.conf import settings
+# from django.db import connection
 
 DJANGO_BASE_DIR = Path(__file__).parent.parent # Selecionando a raiz do projeto
 NUMBER_OF_OBJECTS = 1000
@@ -23,13 +24,17 @@ if __name__ == '__main__':
 
     # CUIDADO
     Contact.objects.all().delete() # Deletando todos os Contatos existentes
-    Category.objects.all().delete() # Deletando todas as Categorias existentes 
+    Category.objects.all().delete() # Deletando todas as Categorias existentes
+
+    # ESTE CODIGO REINICIA OS IDS TAMBÉM:
+    # with connection.cursor() as cursor:
+    #     cursor.execute("DELETE FROM sqlite_sequence WHERE name='contact_contact'") 
 
     fake = faker.Faker('pt_BR')
 
     categories = ['Amigos', 'Família', 'Conhecidos']
 
-    django_categories = [Category(name=name) for name in categories] # Criando a lista de categorias na instancia 'Categroy'
+    django_categories = [Category(name=name) for name in categories] # Criando a lista de categorias na instancia 'Category'
     # Resultado esperado: 
     # django_categories = [
     #     Category(name = 'Amigos')
